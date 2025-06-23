@@ -1,8 +1,6 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin, Navigation, Ruler, TreePine } from "lucide-react";
-import { MapContainer, TileLayer } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
 
 const MapSection = () => {
   return (
@@ -62,23 +60,18 @@ const MapSection = () => {
 
       <Card className="bg-white/80 backdrop-blur-sm border-green-200 mb-8">
         <CardHeader>
-          <CardTitle className="text-center text-green-800">Site Location Map</CardTitle>
+          <CardTitle className="text-center text-green-800">Site Location</CardTitle>
           <CardDescription className="text-center">
-            Interactive map showing the project site location
+            Project site information and coordinates
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="h-96 rounded-lg overflow-hidden">
-            <MapContainer
-              center={[40.7128, -74.0060]}
-              zoom={14}
-              style={{ height: '100%', width: '100%' }}
-            >
-              <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              />
-            </MapContainer>
+          <div className="h-96 rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
+            <div className="text-center">
+              <MapPin className="h-16 w-16 text-green-600 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">Site Location</h3>
+              <p className="text-gray-600">Downtown District - 40.7128° N, 74.0060° W</p>
+            </div>
           </div>
         </CardContent>
       </Card>
