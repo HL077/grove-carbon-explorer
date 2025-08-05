@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { TreePine, BarChart3, MapPin } from "lucide-react";
+import { TreePine, BarChart3, MapPin, ImageIcon } from "lucide-react";
 
 interface NavigationProps {
   activeSection: string;
@@ -11,6 +11,7 @@ const Navigation = ({ activeSection, onSectionChange }: NavigationProps) => {
   const navItems = [
     { id: "landing", label: "Home", icon: TreePine },
     { id: "dashboard", label: "Dashboard", icon: BarChart3 },
+    { id: "gallery", label: "Gallery", icon: ImageIcon },
     { id: "map", label: "Location", icon: MapPin },
   ];
 

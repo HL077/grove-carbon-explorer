@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ArrowDown, ArrowRight, TreePine, BarChart3, MapPin } from "lucide-react";
 import LandingSection from "@/components/LandingSection";
 import DashboardSection from "@/components/DashboardSection";
+import GallerySection from "@/components/GallerySection";
 import MapSection from "@/components/MapSection";
 import Navigation from "@/components/Navigation";
 
@@ -21,6 +22,8 @@ const Index = () => {
         return <LandingSection onNavigate={handleSectionChange} />;
       case "dashboard":
         return <DashboardSection />;
+      case "gallery":
+        return <GallerySection />;
       case "map":
         return <MapSection />;
       default:
