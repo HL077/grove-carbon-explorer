@@ -11,30 +11,29 @@ import Navigation from "@/components/Navigation";
 const Index = () => {
   const [activeSection, setActiveSection] = useState("landing");
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setActiveSection(sectionId);
+  const handleSectionChange = (sectionId: string) => {
+    setActiveSection(sectionId);
+  };
+
+  const renderActiveSection = () => {
+    switch (activeSection) {
+      case "landing":
+        return <LandingSection onNavigate={handleSectionChange} />;
+      case "dashboard":
+        return <DashboardSection />;
+      case "map":
+        return <MapSection />;
+      default:
+        return <LandingSection onNavigate={handleSectionChange} />;
     }
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
-      <Navigation activeSection={activeSection} onSectionChange={scrollToSection} />
+      <Navigation activeSection={activeSection} onSectionChange={handleSectionChange} />
       
-      <main className="pt-16">
-        <section id="landing" className="min-h-screen">
-          <LandingSection onNavigate={scrollToSection} />
-        </section>
-        
-        <section id="dashboard" className="min-h-screen">
-          <DashboardSection />
-        </section>
-        
-        <section id="map" className="min-h-screen">
-          <MapSection />
-        </section>
+      <main className="pt-16 min-h-screen">
+        {renderActiveSection()}
       </main>
     </div>
   );
