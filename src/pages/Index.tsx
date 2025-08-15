@@ -6,6 +6,7 @@ import { ArrowDown, ArrowRight, TreePine, BarChart3, MapPin } from "lucide-react
 import LandingSection from "@/components/LandingSection";
 import DashboardSection from "@/components/DashboardSection";
 import GallerySection from "@/components/GallerySection";
+import UploadSection from "@/components/UploadSection";
 import MapSection from "@/components/MapSection";
 import Navigation from "@/components/Navigation";
 
@@ -24,6 +25,8 @@ const Index = () => {
         return <DashboardSection />;
       case "gallery":
         return <GallerySection />;
+      case "upload":
+        return <UploadSection />;
       case "map":
         return <MapSection />;
       default:
