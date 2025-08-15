@@ -1,26 +1,8 @@
-import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router-dom";
-import { useToast } from "@/components/ui/use-toast";
-import { Plus } from "lucide-react";
 
-interface StudyArea {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  tags: string[];
-  csvData?: string;
-  isCustom?: boolean;
-}
-
-const defaultStudyAreas: StudyArea[] = [
+const studyAreas = [
   {
     id: 1,
     title: "Old Growth Forest",
@@ -60,104 +42,17 @@ const defaultStudyAreas: StudyArea[] = [
 
 const GallerySection = () => {
   const navigate = useNavigate();
-  const { toast } = useToast();
-  
-  const [studyAreas, setStudyAreas] = useState<StudyArea[]>(() => {
-    const saved = localStorage.getItem('customStudyAreas');
-    return saved ? [...defaultStudyAreas, ...JSON.parse(saved)] : defaultStudyAreas;
-  });
-  
-  const [isAdminDialogOpen, setIsAdminDialogOpen] = useState(false);
-  const [isAdmin] = useState(true); // For demo - in real app, check user auth
-  const [newStudyArea, setNewStudyArea] = useState({
-    title: '',
-    description: '',
-    csvFile: null as File | null
-  });
 
   const handleStudyAreaClick = (id: number) => {
     navigate(`/study-area/${id}`);
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file && file.type === 'text/csv') {
-      setNewStudyArea(prev => ({ ...prev, csvFile: file }));
-    } else {
-      toast({
-        title: "Invalid file",
-        description: "Please select a CSV file",
-        variant: "destructive"
-      });
-    }
-  };
-
-  const handleCreateStudyArea = async () => {
-    if (!newStudyArea.title || !newStudyArea.description || !newStudyArea.csvFile) {
-      toast({
-        title: "Missing information",
-        description: "Please fill in all fields and select a CSV file",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    try {
-      const csvText = await newStudyArea.csvFile.text();
-      const newId = Math.max(...studyAreas.map(area => area.id)) + 1;
-      
-      const customStudyArea: StudyArea = {
-        id: newId,
-        title: newStudyArea.title,
-        description: newStudyArea.description,
-        image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop",
-        tags: ["Custom", "CSV Data", "Admin Created"],
-        csvData: csvText,
-        isCustom: true
-      };
-
-      const updatedStudyAreas = [...studyAreas, customStudyArea];
-      setStudyAreas(updatedStudyAreas);
-      
-      // Save custom areas to localStorage
-      const customAreas = updatedStudyAreas.filter(area => area.isCustom);
-      localStorage.setItem('customStudyAreas', JSON.stringify(customAreas));
-      
-      setIsAdminDialogOpen(false);
-      setNewStudyArea({ title: '', description: '', csvFile: null });
-      
-      toast({
-        title: "Success",
-        description: "New study area created successfully"
-      });
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to process CSV file",
-        variant: "destructive"
-      });
-    }
-  };
-
   return (
     <div className="container mx-auto px-4 py-16">
       <div className="text-center mb-12">
-        <div className="flex justify-between items-center mb-4">
-          <div className="flex-1">
-            <h2 className="text-4xl font-bold text-green-800">
-              Forest Study Areas [Title TBD]
-            </h2>
-          </div>
-          {isAdmin && (
-            <Button 
-              onClick={() => setIsAdminDialogOpen(true)}
-              className="bg-green-600 hover:bg-green-700 text-white"
-            >
-              <Plus className="w-4 h-4 mr-2" />
-              Add Study Area
-            </Button>
-          )}
-        </div>
+        <h2 className="text-4xl font-bold text-green-800 mb-4">
+          Forest Study Areas [Title TBD]
+        </h2>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
           Explore diverse forest ecosystems and their role in carbon capture and environmental sustainability
         </p>
@@ -197,52 +92,6 @@ const GallerySection = () => {
           </div>
         ))}
       </div>
-
-      <Dialog open={isAdminDialogOpen} onOpenChange={setIsAdminDialogOpen}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle>Add New Study Area</DialogTitle>
-          </DialogHeader>
-          <div className="space-y-4">
-            <div>
-              <Label htmlFor="title">Title</Label>
-              <Input
-                id="title"
-                value={newStudyArea.title}
-                onChange={(e) => setNewStudyArea(prev => ({ ...prev, title: e.target.value }))}
-                placeholder="Enter study area title"
-              />
-            </div>
-            <div>
-              <Label htmlFor="description">Description</Label>
-              <Textarea
-                id="description"
-                value={newStudyArea.description}
-                onChange={(e) => setNewStudyArea(prev => ({ ...prev, description: e.target.value }))}
-                placeholder="Enter study area description"
-                rows={3}
-              />
-            </div>
-            <div>
-              <Label htmlFor="csvFile">CSV File</Label>
-              <Input
-                id="csvFile"
-                type="file"
-                accept=".csv"
-                onChange={handleFileChange}
-              />
-            </div>
-            <div className="flex justify-end gap-2">
-              <Button variant="outline" onClick={() => setIsAdminDialogOpen(false)}>
-                Cancel
-              </Button>
-              <Button onClick={handleCreateStudyArea}>
-                Create Study Area
-              </Button>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
     </div>
   );
 };
