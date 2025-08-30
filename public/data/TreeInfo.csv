@@ -1,194 +1,324 @@
 ﻿Point_Id,Species,Species2,DBH
-GS0002,"Fraxinus pennsylvanica
-","Green Ash
+GS0002,"Fraxinus pennsylvanica
+
+","Green Ash
+
 ",18.3999996
-GS0003,"Acer saccharum
-","Sugar Maple
+GS0003,"Acer saccharum
+
+","Sugar Maple
+
 ",15.6000004
-GS0004,"Acer saccharum
-","Sugar Maple
+GS0004,"Acer saccharum
+
+","Sugar Maple
+
 ",14.3999996
-GS0005,"Acer saccharum
-","Sugar Maple
-",16.3999996
-GS0006,"Acer saccharum
-","Sugar Maple
-",5.4000001
-GS0007,"Fraxinus pennsylvanica
-","Green Ash
+GS0005,"Acer saccharum
+
+","Sugar Maple
+
+",0
+GS0006,"Acer saccharum
+
+","Sugar Maple
+
+",0
+GS0007,"Fraxinus pennsylvanica
+
+","Green Ash
+
 ",22.9500008
-GS0008,"Fraxinus pennsylvanica
-","Green Ash
+GS0008,"Fraxinus pennsylvanica
+
+","Green Ash
+
 ",20.2000008
-GS0009,"Acer saccharum
-","Sugar Maple
+GS0009,"Acer saccharum
+
+","Sugar Maple
+
 ",15.3000002
-GS0010,"Acer saccharum
-","Sugar Maple
+GS0010,"Acer saccharum
+
+","Sugar Maple
+
 ",6.5000000
-GS0011,"Acer saccharum
-","Sugar Maple
+GS0011,"Acer saccharum
+
+","Sugar Maple
+
 ",11.5000000
-GS0012,"Fraxinus pennsylvanica
-","Green Ash
+GS0012,"Fraxinus pennsylvanica
+
+","Green Ash
+
 ",12.3000002
-GS0013,"Fraxinus pennsylvanica
-","Green Ash
+GS0013,"Fraxinus pennsylvanica
+
+","Green Ash
+
 ",28.8500004
-GS0014,"Acer saccharum
-","Sugar Maple
+GS0014,"Acer saccharum
+
+","Sugar Maple
+
 ",18.3999996
-GS0015,"Fraxinus pennsylvanica
-","Green Ash
+GS0015,"Fraxinus pennsylvanica
+
+","Green Ash
+
 ",10.3000002
-GS0016,"
-","
+GS0016,"
+
+","
+
 ",6.1999998
-GS0017,"Fraxinus pennsylvanica
-"," Green Ash
+GS0017,"Fraxinus pennsylvanica
+
+"," Green Ash
+
 ",9.1000004
-GS0018,"Ulmus americana
-","American Elm
+GS0018,"Ulmus americana
+
+","American Elm
+
 ",8.1999998
-GS0019,"Fraxinus pennsylvanica
-","Green Ash
+GS0019,"Fraxinus pennsylvanica
+
+","Green Ash
+
 ",15.6999998
-GS0020,"Ulmus americana
-","American Elm
+GS0020,"Ulmus americana
+
+","American Elm
+
 ",19.2000008
-GS0021,"Fraxinus americana
-
-","White Ash tree
+GS0021,"Fraxinus americana
+
+
+
+","White Ash tree
+
 ",22.8999996
-GS0022,"Fraxinus americana
-","White Ash tree
+GS0022,"Fraxinus americana
+
+","White Ash tree
+
 ",15.3000002
-GS0023,"Acer saccharum
-","Sugar Maple
+GS0023,"Acer saccharum
+
+","Sugar Maple
+
 ",6.0999999
-GS0024,"Fraxinus pennsylvanica
-","Green Ash
+GS0024,"Fraxinus pennsylvanica
+
+","Green Ash
+
 ",7.6999998
-GS0025,"Fraxinus pennsylvanica
-","Green Ash
+GS0025,"Fraxinus pennsylvanica
+
+","Green Ash
+
 ",10.1999998
-GS0026,"Fraxinus pennsylvanica
-","Green Ash
+GS0026,"Fraxinus pennsylvanica
+
+","Green Ash
+
 ",7.4000001
-GS0027,"Acer saccharum
-","Sugar Maple
+GS0027,"Acer saccharum
+
+","Sugar Maple
+
 ",13.1000004
-GS0028,"Fraxinus pennsylvanica
-","Green Ash
+GS0028,"Fraxinus pennsylvanica
+
+","Green Ash
+
 ",28.7000008
-GS0029,"Fraxinus pennsylvanica
-","Green Ash
+GS0029,"Fraxinus pennsylvanica
+
+","Green Ash
+
 ",10.1999998
-GS0030,"Ulmus americana
-","American Elm
+GS0030,"Ulmus americana
+
+","American Elm
+
 ",6.6999998
-GS0031,"Fraxinus pennsylvanica
-","Green Ash
+GS0031,"Fraxinus pennsylvanica
+
+","Green Ash
+
 ",33.0000000
-GS0032,"Acer saccharum
-","Sugar Maple
+GS0032,"Acer saccharum
+
+","Sugar Maple
+
 ",13.5000000
-GS0033,"Fraxinus pennsylvanica
-","Green Ash
+GS0033,"Fraxinus pennsylvanica
+
+","Green Ash
+
 ",9.1999998
-GS0034,"Fraxinus pennsylvanica
-","Green Ash
+GS0034,"Fraxinus pennsylvanica
+
+","Green Ash
+
 ",7.0000000
-GS0035,"Tilia americana
-","American Basswood
+GS0035,"Tilia americana
+
+","American Basswood
+
 ",7.8000002
-GS0036,"Acer saccharum
-","Sugar Maple
+GS0036,"Acer saccharum
+
+","Sugar Maple
+
 ",23.1000004
-GS0037,"Ostrya virginiana
-","Eastern Hophornbeam
+GS0037,"Ostrya virginiana
+
+","Eastern Hophornbeam
+
 ",14.3999996
-GS0038,"Acer saccharum
-","Sugar Maple
+GS0038,"Acer saccharum
+
+","Sugar Maple
+
 ",20.1000004
-GS0039,"Acer saccharum
-","Sugar Maple
+GS0039,"Acer saccharum
+
+","Sugar Maple
+
 ",6.8000002
-GS0040,"Acer saccharum
-","Sugar Maple
+GS0040,"Acer saccharum
+
+","Sugar Maple
+
 ",8.5000000
-GS0041,"Acer saccharum
-","Sugar Maple
+GS0041,"Acer saccharum
+
+","Sugar Maple
+
 ",15.6000004
-GS0042,"Tilia americana
-","American Basswood
+GS0042,"Tilia americana
+
+","American Basswood
+
 ",32.5999985
-GS0043,"Acer saccharum
-","Sugar Maple
+GS0043,"Acer saccharum
+
+","Sugar Maple
+
 ",11.6000004
-GS0044,"Acer saccharum
-","Sugar Maple
+GS0044,"Acer saccharum
+
+","Sugar Maple
+
 ",12.0000000
-GS0045,"Quercus macrocarpa
-","bur oak
+GS0045,"Quercus macrocarpa
+
+","bur oak
+
 ",34.5000000
-GS0046,"Ulmus americana
-","American Elm
+GS0046,"Ulmus americana
+
+","American Elm
+
 ",11.3999996
-GS0047,"Ulmus americana
-","American Elm
+GS0047,"Ulmus americana
+
+","American Elm
+
 ",9.0000000
-GS0048,"Ulmus americana
-","American Elm
+GS0048,"Ulmus americana
+
+","American Elm
+
 ",18.2000008
-GS0049,"Acer saccharum
-","Sugar Maple
+GS0049,"Acer saccharum
+
+","Sugar Maple
+
 ",6.5000000
-GS0050,"Ulmus americana
-","American Elm
+GS0050,"Ulmus americana
+
+","American Elm
+
 ",8.8000002
-GS0051,"Ulmus americana
-","American Elm
+GS0051,"Ulmus americana
+
+","American Elm
+
 ",8.5000000
-GS0052,"Ulmus americana
-","American Elm
+GS0052,"Ulmus americana
+
+","American Elm
+
 ",20.0000000
-GS0053,"Ostrya virginiana
-","Eastern Hophornbeam
+GS0053,"Ostrya virginiana
+
+","Eastern Hophornbeam
+
 ",12.5000000
-GS0054,"Acer saccharum
-","Sugar Maple
+GS0054,"Acer saccharum
+
+","Sugar Maple
+
 ",10.1999998
-GS0055,"Acer saccharum
-","Sugar Maple
+GS0055,"Acer saccharum
+
+","Sugar Maple
+
 ",6.1999998
-GS0056,"Acer saccharum
-","Sugar Maple
+GS0056,"Acer saccharum
+
+","Sugar Maple
+
 ",38.7000008
-GS0057,"Acer saccharum
-","Sugar Maple
+GS0057,"Acer saccharum
+
+","Sugar Maple
+
 ",6.5999999
-GS0058,"Acer saccharum
-","Sugar Maple
+GS0058,"Acer saccharum
+
+","Sugar Maple
+
 ",5.5999999
-GS0059,"Acer saccharum
-","Sugar Maple
+GS0059,"Acer saccharum
+
+","Sugar Maple
+
 ",8.3000002
-GS0060,"Acer saccharum
-","Sugar Maple
+GS0060,"Acer saccharum
+
+","Sugar Maple
+
 ",13.1999998
-GS0061,"Fraxinus pennsylvanica
-","Green Ash
+GS0061,"Fraxinus pennsylvanica
+
+","Green Ash
+
 ",10.1999998
-GS0062,"Fraxinus pennsylvanica
-","Green Ash
+GS0062,"Fraxinus pennsylvanica
+
+","Green Ash
+
 ",7.4000001
-GS0063,"Acer saccharum
-","Sugar Maple
+GS0063,"Acer saccharum
+
+","Sugar Maple
+
 ",15.3000002
-GS0064,"Acer saccharum
-","Sugar Maple
+GS0064,"Acer saccharum
+
+","Sugar Maple
+
 ",21.7999992
-GS0001,"Ulmus americana
-","American Elm
+GS0001,"Ulmus americana
+
+","American Elm
+
 ",8.3999996
+
