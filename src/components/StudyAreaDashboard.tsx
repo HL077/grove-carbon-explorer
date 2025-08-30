@@ -1,9 +1,11 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, TreePine, Leaf, BarChart3, TrendingUp } from "lucide-react";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell } from "recharts";
+import Papa from "papaparse";
 
 const studyAreaData = {
   1: {
@@ -168,11 +170,82 @@ const studyAreaData = {
   }
 };
 
+interface TreeData {
+  Point_Id: string;
+  Species: string;
+  Species2: string;
+  DBH: string;
+}
+
+interface SpeciesData {
+  name: string;
+  count: number;
+  averageDBH: number;
+  commonName: string;
+}
+
 const StudyAreaDashboard = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [treeData, setTreeData] = useState<SpeciesData[]>([]);
+  const [loading, setLoading] = useState(true);
   
   const studyArea = id ? studyAreaData[parseInt(id) as keyof typeof studyAreaData] : undefined;
+
+  useEffect(() => {
+    const loadTreeData = async () => {
+      try {
+        const response = await fetch('/data/TreeInfo.csv');
+        const csvText = await response.text();
+        
+        Papa.parse(csvText, {
+          header: true,
+          complete: (results) => {
+            const data = results.data as TreeData[];
+            
+            // Group by species and calculate averages
+            const speciesMap = new Map<string, { count: number; totalDBH: number; commonName: string }>();
+            
+            data.forEach((row) => {
+              if (row.Species && row.DBH && row.Species.trim() !== '') {
+                const species = row.Species.trim();
+                const commonName = row.Species2?.trim() || species;
+                const dbh = parseFloat(row.DBH);
+                
+                if (!isNaN(dbh)) {
+                  if (speciesMap.has(species)) {
+                    const existing = speciesMap.get(species)!;
+                    existing.count += 1;
+                    existing.totalDBH += dbh;
+                  } else {
+                    speciesMap.set(species, { count: 1, totalDBH: dbh, commonName });
+                  }
+                }
+              }
+            });
+            
+            // Convert to array format for charts
+            const speciesData: SpeciesData[] = Array.from(speciesMap.entries()).map(([species, data]) => ({
+              name: species,
+              count: data.count,
+              averageDBH: Number((data.totalDBH / data.count).toFixed(1)),
+              commonName: data.commonName
+            })).sort((a, b) => b.count - a.count);
+            
+            setTreeData(speciesData);
+            setLoading(false);
+          }
+        });
+      } catch (error) {
+        console.error('Error loading tree data:', error);
+        setLoading(false);
+      }
+    };
+
+    loadTreeData();
+  }, []);
+
+  const COLORS = ['#22c55e', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4', '#f97316', '#84cc16'];
 
   if (!studyArea) {
     return (
@@ -318,6 +391,85 @@ const StudyAreaDashboard = () => {
           </CardContent>
         </Card>
       </div>
+
+      {/* Tree Species Analysis */}
+      {!loading && treeData.length > 0 && (
+        <div className="grid lg:grid-cols-2 gap-8 mb-8">
+          <Card>
+            <CardHeader>
+              <CardTitle>Tree Species Distribution</CardTitle>
+              <CardDescription>
+                Count of trees by species in the study area
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ResponsiveContainer width="100%" height={350}>
+                <PieChart>
+                  <Pie
+                    data={treeData}
+                    cx="50%"
+                    cy="50%"
+                    labelLine={false}
+                    label={({ name, count, percent }) => 
+                      `${name.split(' ')[0]} ${name.split(' ')[1]} (${count})`
+                    }
+                    outerRadius={100}
+                    fill="#8884d8"
+                    dataKey="count"
+                  >
+                    {treeData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip formatter={(value, name, props) => [
+                    `${value} trees`, 
+                    props.payload?.commonName || props.payload?.name
+                  ]} />
+                </PieChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Average DBH by Species</CardTitle>
+              <CardDescription>
+                Average Diameter at Breast Height (inches) for each tree species
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ResponsiveContainer width="100%" height={350}>
+                <BarChart data={treeData.slice(0, 8)} layout="horizontal" margin={{ left: 80 }}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis type="number" />
+                  <YAxis 
+                    type="category" 
+                    dataKey="commonName" 
+                    width={80}
+                    tick={{ fontSize: 12 }}
+                  />
+                  <Tooltip 
+                    formatter={(value, name, props) => [
+                      `${value}" DBH`, 
+                      `Average (${props.payload?.count} trees)`
+                    ]}
+                    labelFormatter={(label) => `Species: ${label}`}
+                  />
+                  <Bar dataKey="averageDBH" fill="#22c55e" />
+                </BarChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      {loading && (
+        <Card className="mb-8">
+          <CardContent className="p-8 text-center">
+            <div className="text-muted-foreground">Loading tree species data...</div>
+          </CardContent>
+        </Card>
+      )}
     </div>
   );
 };
