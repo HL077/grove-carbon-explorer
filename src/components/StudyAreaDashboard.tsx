@@ -439,14 +439,17 @@ const StudyAreaDashboard = () => {
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={350}>
-                <BarChart data={treeData.slice(0, 8)} layout="horizontal" margin={{ left: 80 }}>
+                <BarChart data={treeData.slice(0, 6)} margin={{ bottom: 60 }}>
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis type="number" />
-                  <YAxis 
-                    type="category" 
+                  <XAxis 
                     dataKey="commonName" 
-                    width={80}
-                    tick={{ fontSize: 12 }}
+                    angle={-45}
+                    textAnchor="end"
+                    height={80}
+                    tick={{ fontSize: 11 }}
+                  />
+                  <YAxis 
+                    label={{ value: 'DBH (inches)', angle: -90, position: 'insideLeft' }}
                   />
                   <Tooltip 
                     formatter={(value, name, props) => [
